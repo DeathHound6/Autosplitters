@@ -93,5 +93,5 @@ gameTime
 reset
 {
     if (settings["pf"])
-        return current.pfState == 1 || current.pfState == 2 || current.pfState == 5;
+        return current.pfState == 5;
 }
