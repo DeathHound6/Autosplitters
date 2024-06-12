@@ -66,8 +66,7 @@ split
 {
     // If state is playing or loading 1 (when won/lost)
     if (settings["pf"] && (current.pfState == 1 || current.pfState == 2 || current.pfState == 7 || current.pfState == 11))
-        return (old.pfCheckpointNum == current.pfCheckpointNum - 1) ||
-            (current.pfCheckpointNum == current.pfCheckpointMax && old.pfCheckpointNum != current.pfCheckpointMax);
+        return (old.pfCheckpointNum == (current.pfCheckpointNum - 1)) || (current.pfCheckpointNum == current.pfCheckpointMax);
 }
 
 isLoading
