@@ -19,6 +19,10 @@ state("DyingLightGame", "Steam")
     int start : "gamedll_x64_rwdi.dll", 0x1CF8050;
     int loading: "rd3d11_x64_rwdi.dll", 0x7E048;
 
+    // base game - both pointers resolve to same address
+    uint mainPercent: "engine_x64_rwdi.dll", 0xA401D8, 0x560, 0x0, 0x10, 0x10, 0x10, 0x0, -0x10;
+    // uint mainPercent: "engine_x64_rwdi.dll", 0xA401E8, 0x560, 0x0, 0x10, 0x10, 0x10, 0x0, -0x10;
+
     // Parkour Fever stuff - ILs
     int pfState : "gamedll_x64_rwdi.dll", 0x01BAFA68, 0xE00, 0x0, 0x2F58;
     uint pfCheckpointNum : "gamedll_x64_rwdi.dll", 0x01BAFA68, 0xE00, 0x0, 0x2F50;
@@ -41,6 +45,57 @@ init
 
 startup
 {
+    settings.Add("bg", false, "Main Game");
+    settings.Add("first_assignment", false, "First Assignment", "bg");
+    settings.Add("gre1", false, "GRE Call", "first_assignment");
+    settings.Add("tower1", false, "Tower Meeting", "first_assignment");
+    settings.Add("airdrop", false, "Airdrop", "bg");
+    settings.Add("airdrop1", false, "Airdrop 1", "airdrop");
+    settings.Add("airdrop2", false, "Real Airdrop", "airdrop");
+    settings.Add("tower2", false, "Return to Tower", "airdrop");
+    settings.Add("tower3", false, "Tower Meeting", "airdrop");
+    settings.Add("pact", false, "Pact With Rais", "bg");
+    settings.Add("tower4", false, "Go Downstairs", "pact");
+    settings.Add("talk1", false, "Talk to Karim", "pact");
+    settings.Add("garrison", false, "Return to Rais' Garrison (after Antennas)", "pact");
+    settings.Add("talk2", false, "Talk to Karim again", "pact");
+    settings.Add("talk3", false, "Talk to Gursel", "pact");
+    settings.Add("patrol", false, "Collect note from missing patrol", "pact");
+    settings.Add("tower5", false, "Return to Tower", "pact");
+    settings.Add("jade1", false, "Listen to Jade talk about the school", "pact");
+    settings.Add("siblings", false, "Siblings", "bg");
+    settings.Add("enter1", false, "Enter School", "siblings");
+    settings.Add("thugs1", false, "Kill Rais' thugs (upstairs)", "siblings");
+    settings.Add("thugs2", false, "Kill Rais' thugs (basement)", "siblings");
+    settings.Add("leave1", false, "Leave school", "siblings");
+    settings.Add("tower6", false, "Return to Tower", "siblings");
+    settings.Add("talk4", false, "Talk to Zere", "siblings");
+    settings.Add("talk5", false, "Talk to Quartermaster", "siblings");
+    settings.Add("talk6", false, "Give Zere bolter tissue", "siblings");
+    settings.Add("enter2", false, "Enter trainyard", "siblings");
+    settings.Add("talk7", "Talk to Brecken (radio)", "siblings");
+    settings.Add("pit", false, "The Pit", "bg");
+    settings.Add("talk8", false, "Talk to Brecken", "pit");
+    settings.Add("zere1", false, "Protect Zere's trailer", "pit");
+    settings.Add("enter3", false, "Enter Rai's Garrison", "pit");
+    settings.Add("zere2", false, "Find Zere", "pit");
+    settings.Add("hand", false, "Cut Rais' hand off", "pit");
+    settings.Add("leave2", false, "Leave the Pit", "pit");
+    settings.Add("seizure1", false, "Pass out from seizure", "pit");
+    settings.Add("stash1", false, "Open Stash", "pit");
+    settings.Add("saviors", false, "The Saviors", "bg");
+    settings.Add("enter4", false, "Enter Sewers", "saviors");
+    settings.Add("talk8", false, "Talk to Saviors", "saviors");
+    settings.Add("ambush", false, "Survive ambush", "saviors");
+    settings.Add("leave3", false, "Exit Sewers", "saviors");
+    settings.Add("enter5", false, "Enter Old Town", "saviors");
+    settings.Add("education", false, "Higher Education", "bg");
+    settings.Add("embers", false, "Meet Troy and Savvy", "education");
+    settings.Add("uni", false, "Reach University", "education");
+    settings.Add("talk9", false, "Talk to Fidan", "education");
+    settings.Add("talk10", false, "Talk to Troy and Savvy", "education");
+    // settings.Add("");
+
     settings.Add("pf", false, "Parkour Fever");
 
     vars.steamHash = new byte[] { 0xC8, 0xFA, 0x97, 0x96, 0xC7, 0xE0, 0xF4, 0x6C, 0x9B, 0xD7, 0x7B, 0x01, 0xFC, 0xB7, 0xF2, 0xD4, 0xE0, 0x82, 0xDD, 0xAD, 0x41, 0xEC, 0xA0, 0x38, 0x38, 0x3F, 0x5A, 0xFC, 0x97, 0x06, 0x7D, 0x72 };
